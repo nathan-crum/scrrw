@@ -1,0 +1,145 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# scrrw
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+scrrw fits integrated spatial capture-recapture random walk movement
+models to estimate wildlife population density and individual movement
+trajectories
+
+## Installation
+
+You can install scrrw with:
+
+``` r
+library(devtools)
+install_github("nathan-crum/scrrw")
+```
+
+## Simple Random Walk Example
+
+The code below simulates data and fits an integrated spatial
+capture-recapture simple random walk model
+
+``` r
+library(scrrw)
+data = simData_SRW(K.train = 10, K.forecast = 5, det.sd = 1/3, p0 = 0.5, move.sd = 2, A.scale = 2)
+mod.fit = scr_lt_Closed_SimpleRW(data = data, density.movement = ~1, g0 = ~1, det.scale = ~1, hSigma = ~-1, hBeta = ~-1)
+SCR_lt_Closed_SimpleRW_Abundance(data = mod.fit$data, results = mod.fit$results)
+Parameter_Estimates_SimpleRW(data = mod.fit$data, results = mod.fit$results)
+FB_SRW = ForwardBackward_Closed_SimpleRW(data = mod.fit$data, par = mod.fit$results$par)
+```
+
+`simData_SRW()` returns a named list, named `data` here. `data` contains
+all of the input data needed to fit an integrated spatial
+capture-recapture simple random walk model using
+`scr_lt_Closed_SimpleRW()`. The objects in `data` that are important to
+pass to `scr_lt_Closed_SimpleRW()` for model fitting are:
+
+- `y` is a matrix holding the encounter history
+  - The element in row i, column j is 1 if individual i was observed on
+    occasion j; 0 otherwise
+- `y.pix` is a matrix holding individual’s observed locations
+  - The element in row i, column j is the grid cell/sub-region number in
+    which individual i was observed on occasion j
+  - Grid cell/sub-region numbers correspond to the rows of `habitat`
+- `detDists` is a matrix holding individual’s distances from survey
+  effort
+  - The element in row i, column j is the distance from individual i’s
+    observed location on occasion j to the nearest survey trackline or
+    point
+- `y.g0.covar`, `y.ds.covar`, `y.hs.covar`, `y.hb.covar`, and
+  `y.platform` are arrays containing any covariate data for the
+  detection model
+- `habitat` is a matrix with columns named “x”, “y”, and “Area”
+  describing the grid/sub-regions of the study area
+  - May also contain columns of spatially explicit covariates used to
+    model initial density and movement
+- `distMat` is a matrix containing the pairwise distances between each
+  pair of grid cells/sub-regions in the study area
+- `detGrid` is an array describing the detection grid/sub-sub-regions to
+  calculate detection probability
+  - Created with `makeDetGrid()`
+- `lines.arr` is an array holding information about survey effort
+  - Contains coordinates for the endpoints and the slope and intercept
+    of each survey trackline
+- `N` is the number of individuals detected at least once
+- `K` is the number of sampling occasions
+- `K.prim` is the number of primary sampling occasions
+  - Must be 1 for the closed population model
+- `SecOcc` is a vector of the number of secondary sampling occasions in
+  each primary occasion
+  - Must sum to `K`
+  - Not used in closed population models
+- `tr_b4_occ` is a vector of the number of movement transitions before
+  each sampling occasion
+  - This can be used to accommodate uneven sampling intervals
+- `nCells` is the number of grid cells/sub-regions in the study area
+  - Must equal the number of rows in `habitat`
+- `N.states` is the number of states in the model
+  - In the closed population model this must be equivalent to `nCells`
+- `Area` is the area of one grid cell/sub-region
+- `nDetCells` is the number of detection grid cells/sub-sub-regions in
+  the study area
+  - Must equal the number of rows in `detGrid`
+- `detArea` is the area of one detection grid cell/sub-sub-region
+- `truncDist` is the truncation distance for the detection model
+  - Detection probability is fixed to 0 at detection grid cells that are
+    farther from survey effort than `truncDist`
+- `mean.ac.move` is the mean of the maximum pairwise distance between
+  each individual’s observed locations
+  - Used as an initial value for the movement scale  
+- `log.fact.N` is a number used in the likelihood calculation
+  - Equals `log(factorial(N))` or `sum(log(1:N))`
+
+`scr_lt_Closed_SimpleRW()` fits a spatial capture-recapture model to the
+data. The `density.movement` argument allows specification of the
+initial density and movement models using additive functions of any
+covariates in `data$habitat`. `density.movement = ~1` specifies a model
+with uniform initial density and no covariates on the movement process.
+The `g0`, `det.scale`, `hSigma`, and `hBeta` arguments allow for
+specification of the detection models based on covariates in `detGrid`,
+`y.g0.covar`, `y.ds.covar`, `y.hs.covar`, and `y.hb.covar`. `det.scale`
+specifies the model for the scale parameter of the half-normal detection
+probability, `hSigma` and `hBeta` specify the models for the parameters
+in the hazard detection function. If the half-normal model is not used
+`det.scale = ~-1` should be used, and if the hazard model is not used
+`hsigma = ~-1, hBeta = ~-1` should be used.
+`SCR_lt_Closed_SimpleRW_Abundance()` and
+`Parameter_Estimates_SimpleRW()` return maximum likelihood estimates and
+95% confidence intervals for expected and realized density, the movement
+scale parameter, and detection model parameters.
+`ForwardBackward_Closed_SimpleRW` returns an array of forward-backward
+probabilities. `FB_SRW[[1]][k,j,i]` is the probability that individual i
+was in grid cell/sub-region j on occasion k.
+
+## Biased Random Walk Example
+
+The code below simulates data and fits an integrated spatial
+capture-recapture biased random walk model
+
+``` r
+library(scrrw)
+data = simData_BRW(K.train = 10, K.forecast = 5, det.sd = 1/3, p0 = 0.5, move.sd = 2, A.scale = 2)
+mod.fit = scr_lt_Closed_BiasedRW(data = data, density.movement = ~1, g0 = ~1, det.scale = ~1, hSigma = ~-1, hBeta = ~-1)
+SCR_lt_Closed_BiasedRW_Abundance(data = mod.fit$data, results = mod.fit$results)
+Parameter_Estimates_BiasedRW(data = mod.fit$data, results = mod.fit$results)
+FB_BRW = ForwardBackward_Closed_BiasedRW(data = mod.fit$data, par = mod.fit$results$par)
+```
+
+## Correlated Random Walk Example
+
+The code below simulates data and fits an integrated spatial
+capture-recapture correlated random walk model
+
+``` r
+library(scrrw)
+data = simData_CorrelatedRW(K.train = 10, K.forecast = 5, det.sd = 1/3, p0 = 0.5, move.sd = 2, A.scale = 2)
+mod.fit = scr_lt_Closed_CorrelatedRW(data = data, density.movement = ~1, g0 = ~1, det.scale = ~1, hSigma = ~-1, hBeta = ~-1)
+SCR_lt_Closed_CorrelatedRW_Abundance(data = mod.fit$data, results = mod.fit$results)
+Parameter_Estimates_CorrelatedRW(data = mod.fit$data, results = mod.fit$results)
+FB_CRW = ForwardBackward_Closed_CorrelatedRW(data = mod.fit$data, par = mod.fit$results$par)
+```

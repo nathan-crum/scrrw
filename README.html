@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<h1 id="scrrw">scrrw</h1>
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+<p>scrrw fits integrated spatial capture-recapture random walk movement
+models to estimate wildlife population density and individual movement
+trajectories</p>
+<h2 id="installation">Installation</h2>
+<p>You can install scrrw with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install_github</span>(<span class="st">&quot;nathan-crum/scrrw&quot;</span>)</span></code></pre></div>
+<h2 id="simple-random-walk-example">Simple Random Walk Example</h2>
+<p>The code below simulates data and fits an integrated spatial
+capture-recapture simple random walk model</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scrrw)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">simData_SRW</span>(<span class="at">K.train =</span> <span class="dv">10</span>, <span class="at">K.forecast =</span> <span class="dv">5</span>, <span class="at">det.sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">p0 =</span> <span class="fl">0.5</span>, <span class="at">move.sd =</span> <span class="dv">2</span>, <span class="at">A.scale =</span> <span class="dv">2</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mod.fit <span class="ot">=</span> <span class="fu">scr_lt_Closed_SimpleRW</span>(<span class="at">data =</span> data, <span class="at">density.movement =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">g0 =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">det.scale =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">hSigma =</span> <span class="sc">~-</span><span class="dv">1</span>, <span class="at">hBeta =</span> <span class="sc">~-</span><span class="dv">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SCR_lt_Closed_SimpleRW_Abundance</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">results =</span> mod.fit<span class="sc">$</span>results)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Parameter_Estimates_SimpleRW</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">results =</span> mod.fit<span class="sc">$</span>results)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>FB_SRW <span class="ot">=</span> <span class="fu">ForwardBackward_Closed_SimpleRW</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">par =</span> mod.fit<span class="sc">$</span>results<span class="sc">$</span>par)</span></code></pre></div>
+<p><code>simData_SRW()</code> returns a named list, named
+<code>data</code> here. <code>data</code> contains all of the input data
+needed to fit an integrated spatial capture-recapture simple random walk
+model using <code>scr_lt_Closed_SimpleRW()</code>. The objects in
+<code>data</code> that are important to pass to
+<code>scr_lt_Closed_SimpleRW()</code> for model fitting are:</p>
+<ul>
+<li><code>y</code> is a matrix holding the encounter history
+<ul>
+<li>The element in row i, column j is 1 if individual i was observed on
+occasion j; 0 otherwise</li>
+</ul></li>
+<li><code>y.pix</code> is a matrix holding individual’s observed
+locations
+<ul>
+<li>The element in row i, column j is the grid cell/sub-region number in
+which individual i was observed on occasion j</li>
+<li>Grid cell/sub-region numbers correspond to the rows of
+<code>habitat</code></li>
+</ul></li>
+<li><code>detDists</code> is a matrix holding individual’s distances
+from survey effort
+<ul>
+<li>The element in row i, column j is the distance from individual i’s
+observed location on occasion j to the nearest survey trackline or
+point</li>
+</ul></li>
+<li><code>y.g0.covar</code>, <code>y.ds.covar</code>,
+<code>y.hs.covar</code>, <code>y.hb.covar</code>, and
+<code>y.platform</code> are arrays containing any covariate data for the
+detection model</li>
+<li><code>habitat</code> is a matrix with columns named “x”, “y”, and
+“Area” describing the grid/sub-regions of the study area
+<ul>
+<li>May also contain columns of spatially explicit covariates used to
+model initial density and movement</li>
+</ul></li>
+<li><code>distMat</code> is a matrix containing the pairwise distances
+between each pair of grid cells/sub-regions in the study area</li>
+<li><code>detGrid</code> is an array describing the detection
+grid/sub-sub-regions to calculate detection probability
+<ul>
+<li>Created with <code>makeDetGrid()</code></li>
+</ul></li>
+<li><code>lines.arr</code> is an array holding information about survey
+effort
+<ul>
+<li>Contains coordinates for the endpoints and the slope and intercept
+of each survey trackline</li>
+</ul></li>
+<li><code>N</code> is the number of individuals detected at least
+once</li>
+<li><code>K</code> is the number of sampling occasions</li>
+<li><code>K.prim</code> is the number of primary sampling occasions
+<ul>
+<li>Must be 1 for the closed population model</li>
+</ul></li>
+<li><code>SecOcc</code> is a vector of the number of secondary sampling
+occasions in each primary occasion
+<ul>
+<li>Must sum to <code>K</code></li>
+<li>Not used in closed population models</li>
+</ul></li>
+<li><code>tr_b4_occ</code> is a vector of the number of movement
+transitions before each sampling occasion
+<ul>
+<li>This can be used to accommodate uneven sampling intervals</li>
+</ul></li>
+<li><code>nCells</code> is the number of grid cells/sub-regions in the
+study area
+<ul>
+<li>Must equal the number of rows in <code>habitat</code></li>
+</ul></li>
+<li><code>N.states</code> is the number of states in the model
+<ul>
+<li>In the closed population model this must be equivalent to
+<code>nCells</code></li>
+</ul></li>
+<li><code>Area</code> is the area of one grid cell/sub-region</li>
+<li><code>nDetCells</code> is the number of detection grid
+cells/sub-sub-regions in the study area
+<ul>
+<li>Must equal the number of rows in <code>detGrid</code></li>
+</ul></li>
+<li><code>detArea</code> is the area of one detection grid
+cell/sub-sub-region</li>
+<li><code>truncDist</code> is the truncation distance for the detection
+model
+<ul>
+<li>Detection probability is fixed to 0 at detection grid cells that are
+farther from survey effort than <code>truncDist</code></li>
+</ul></li>
+<li><code>mean.ac.move</code> is the mean of the maximum pairwise
+distance between each individual’s observed locations
+<ul>
+<li>Used as an initial value for the movement scale</li>
+</ul></li>
+<li><code>log.fact.N</code> is a number used in the likelihood
+calculation
+<ul>
+<li>Equals <code>log(factorial(N))</code> or
+<code>sum(log(1:N))</code></li>
+</ul></li>
+</ul>
+<p><code>scr_lt_Closed_SimpleRW()</code> fits a spatial
+capture-recapture model to the data. The <code>density.movement</code>
+argument allows specification of the initial density and movement models
+using additive functions of any covariates in <code>data$habitat</code>.
+<code>density.movement = ~1</code> specifies a model with uniform
+initial density and no covariates on the movement process. The
+<code>g0</code>, <code>det.scale</code>, <code>hSigma</code>, and
+<code>hBeta</code> arguments allow for specification of the detection
+models based on covariates in <code>detGrid</code>,
+<code>y.g0.covar</code>, <code>y.ds.covar</code>,
+<code>y.hs.covar</code>, and <code>y.hb.covar</code>.
+<code>det.scale</code> specifies the model for the scale parameter of
+the half-normal detection probability, <code>hSigma</code> and
+<code>hBeta</code> specify the models for the parameters in the hazard
+detection function. If the half-normal model is not used
+<code>det.scale = ~-1</code> should be used, and if the hazard model is
+not used <code>hsigma = ~-1, hBeta = ~-1</code> should be used.
+<code>SCR_lt_Closed_SimpleRW_Abundance()</code> and
+<code>Parameter_Estimates_SimpleRW()</code> return maximum likelihood
+estimates and 95% confidence intervals for expected and realized
+density, the movement scale parameter, and detection model parameters.
+<code>ForwardBackward_Closed_SimpleRW</code> returns an array of
+forward-backward probabilities. <code>FB_SRW[[1]][k,j,i]</code> is the
+probability that individual i was in grid cell/sub-region j on occasion
+k.</p>
+<h2 id="biased-random-walk-example">Biased Random Walk Example</h2>
+<p>The code below simulates data and fits an integrated spatial
+capture-recapture biased random walk model</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scrrw)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">simData_BRW</span>(<span class="at">K.train =</span> <span class="dv">10</span>, <span class="at">K.forecast =</span> <span class="dv">5</span>, <span class="at">det.sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">p0 =</span> <span class="fl">0.5</span>, <span class="at">move.sd =</span> <span class="dv">2</span>, <span class="at">A.scale =</span> <span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mod.fit <span class="ot">=</span> <span class="fu">scr_lt_Closed_BiasedRW</span>(<span class="at">data =</span> data, <span class="at">density.movement =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">g0 =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">det.scale =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">hSigma =</span> <span class="sc">~-</span><span class="dv">1</span>, <span class="at">hBeta =</span> <span class="sc">~-</span><span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SCR_lt_Closed_BiasedRW_Abundance</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">results =</span> mod.fit<span class="sc">$</span>results)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Parameter_Estimates_BiasedRW</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">results =</span> mod.fit<span class="sc">$</span>results)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>FB_BRW <span class="ot">=</span> <span class="fu">ForwardBackward_Closed_BiasedRW</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">par =</span> mod.fit<span class="sc">$</span>results<span class="sc">$</span>par)</span></code></pre></div>
+<h2 id="correlated-random-walk-example">Correlated Random Walk
+Example</h2>
+<p>The code below simulates data and fits an integrated spatial
+capture-recapture correlated random walk model</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scrrw)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">simData_CorrelatedRW</span>(<span class="at">K.train =</span> <span class="dv">10</span>, <span class="at">K.forecast =</span> <span class="dv">5</span>, <span class="at">det.sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="at">p0 =</span> <span class="fl">0.5</span>, <span class="at">move.sd =</span> <span class="dv">2</span>, <span class="at">A.scale =</span> <span class="dv">2</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mod.fit <span class="ot">=</span> <span class="fu">scr_lt_Closed_CorrelatedRW</span>(<span class="at">data =</span> data, <span class="at">density.movement =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">g0 =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">det.scale =</span> <span class="sc">~</span><span class="dv">1</span>, <span class="at">hSigma =</span> <span class="sc">~-</span><span class="dv">1</span>, <span class="at">hBeta =</span> <span class="sc">~-</span><span class="dv">1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">SCR_lt_Closed_CorrelatedRW_Abundance</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">results =</span> mod.fit<span class="sc">$</span>results)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Parameter_Estimates_CorrelatedRW</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">results =</span> mod.fit<span class="sc">$</span>results)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>FB_CRW <span class="ot">=</span> <span class="fu">ForwardBackward_Closed_CorrelatedRW</span>(<span class="at">data =</span> mod.fit<span class="sc">$</span>data, <span class="at">par =</span> mod.fit<span class="sc">$</span>results<span class="sc">$</span>par)</span></code></pre></div>
+
+</body>
+</html>
