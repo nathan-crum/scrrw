@@ -17,3 +17,5 @@ RoxygenNote: 7.0.2
 Imports: Rcpp (>= 1.0.7), RcppArmadillo, RcppEigen, RcppNumerical
 LinkingTo: Rcpp, RcppArmadillo, RcppEigen, RcppNumerical
 VignetteBuilder: knitr
+URL: https://github.com/nathan-crum/scrrw
+BugReports: https://github.com/nathan-crum/scrrw/issues
